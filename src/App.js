@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Tabs from './Components/Tabs';
+import { useState } from 'react';
 
+import { useRef, useEffect } from 'react';
+import {gsap} from 'gsap'; 
+import Show from './Components/Show';
 function App() {
+
+
+
+  const [message, setMessage] = useState('')
+  const tabs = ['tab 1','tab 2','tab 3','tab 4','tab 5']
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        tabs.map((item,index) => {
+          return <Tabs setMessage={setMessage} key={index} i={index} tabObject={item}/>
+        })
+      }
+      <Show  message={message}/>
     </div>
   );
 }
